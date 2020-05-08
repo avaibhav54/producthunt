@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1 allign="center">
+  click '+' button on top right to upload your product and that will be seen on the home page
 
+</h1>
 {% for product in products.all %}
 <div class="row pt-3">
   <div class="col-2" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
