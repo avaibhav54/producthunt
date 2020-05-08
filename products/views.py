@@ -18,13 +18,14 @@ def create(request):
             product.pub_date=timezone.datetime.now()
             product.votes_total=1
             product.hunter=request.user
-            product.save()
-            return redirect('/products/'+str(product.id))
+            
             
             if request.POST['url'].startswith('http://') or request.POST['url'].startswith('https://'):
                 product.url=request.POST['url']
             else:
                 product.url='http://'+request.POST['url']
+            product.save()
+            return redirect('/products/'+str(product.id))
 
         else:
             return render(request,'products/create.html',{'error':'all fields required'})
